@@ -4,7 +4,7 @@ def is_symmetric(s):
 
 
 def is_symmetric_unit_test(s, value):
-    print('testing is_symmetric on input "', s, '"', sep='')
+    print("testing is_symmetric on input '", s, "'", sep='')
     assert is_symmetric(s) == value
     print("PASSED")
 
