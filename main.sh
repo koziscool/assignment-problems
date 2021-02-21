@@ -1,4 +1,1 @@
-python test_file.py
-python is_symmetric.py
-python letters_numbers_conversion.py
-python is_prime.py
+python count_characters.py
