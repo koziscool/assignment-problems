@@ -1,6 +1,7 @@
 
 from collections import defaultdict
 
+
 def count_characters(s):
     char_dict = defaultdict(int)
     for c in s:
@@ -18,5 +19,5 @@ def count_characters_test(s, reference_dict):
 s = "A cat!!!"
 cat_dict = {'a': 2, 'c': 1, 't': 1, ' ': 1, '!': 3}
 
-assert count_characters_test( s, cat_dict)
+assert count_characters_test(s, cat_dict)
 print(count_characters(s))
