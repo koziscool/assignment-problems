@@ -7,7 +7,7 @@ class Stack:
         self.data.append(elt)
 
     def pop(self):
-        self.data.pop()
+        return self.data.pop()
 
     def peek(self):
         ret_elt = self.data.pop()
