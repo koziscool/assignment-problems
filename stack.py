@@ -1,5 +1,6 @@
 
 class Stack:
+    '''a class to implement a stack data structure from an underlying list'''
     def __init__(self):
         self.data = []
 
@@ -24,22 +25,22 @@ def stack_test(data, reference_arr):
     return True
 
 s = Stack()
-assert(stack_test(s.data, []))
+assert stack_test(s.data, [])
 print(s.data)
 
 s.push('a')
 s.push('b')
 s.push('c')
 
-assert(stack_test(s.data, ['a', 'b', 'c']))
+assert stack_test(s.data, ['a', 'b', 'c'])
 print(s.data)
 
 s.pop()
 
-assert(stack_test(s.data, ['a', 'b']))
+assert stack_test(s.data, ['a', 'b'])
 print(s.data)
 
 print(s.peek())
 
-assert(stack_test(s.data, ['a', 'b']))
+assert stack_test(s.data, ['a', 'b'])
 print(s.data)
