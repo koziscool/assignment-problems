@@ -1,23 +1,24 @@
 
-def zero_of_tangent_line(c):
-    my_function = lambda x: x * x * x + x - 1
-    derivative = lambda x: 3 * x * x + 1
+estimate_derivative = lambda f, c, delta: (f(c + delta / 2) - f(c - delta / 2)) / delta
 
-    y0 = my_function(c)
-    m = derivative(c)
+def zero_of_tangent_line(f, c, delta):
+    m = estimate_derivative(f, c, delta)
+    return(m * c - f(c)) / m
 
-    return(m * c - y0) / m
-
-def estimate_solution( initial_guess, precision ):
-    new_estimate = zero_of_tangent_line( initial_guess )
+def estimate_solution( f, initial_guess, delta, precision ):
+    new_estimate = zero_of_tangent_line( f, initial_guess, delta )
     if abs(initial_guess - new_estimate) < precision:
         return new_estimate
     else:
-        return estimate_solution(new_estimate, precision)
+        return estimate_solution(f, new_estimate, delta, precision)
 
+f = lambda x: x**3 + x - 1
 
-answer = zero_of_tangent_line(0.5)
+answer = estimate_derivative(f, 0.5, 0.001)
 print(round(answer, 6))
 
-answer = estimate_solution(0.5, 0.01)
+answer = zero_of_tangent_line(f, 0.5, 0.001)
+print(round(answer, 6))
+
+answer = estimate_solution(f, 0.5, 0.001, 0.01)
 print(round(answer, 6))
