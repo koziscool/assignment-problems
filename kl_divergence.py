@@ -1,5 +1,4 @@
-import sys
-sys.path.append('../')
+
 from monte_carlo_coin_flips import *
 from math import log
 from functools import reduce
