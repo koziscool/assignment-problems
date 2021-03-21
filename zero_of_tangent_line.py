@@ -3,7 +3,7 @@ estimate_derivative = lambda f, c, delta: (f(c + delta / 2) - f(c - delta / 2)) 
 
 def zero_of_tangent_line(f, c, delta):
     m = estimate_derivative(f, c, delta)
-    return(m * c - f(c)) / m
+    return c - f(c) / m
 
 def estimate_solution( f, initial_guess, delta, precision ):
     new_estimate = zero_of_tangent_line( f, initial_guess, delta )
