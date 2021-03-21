@@ -68,6 +68,3 @@ for a in range(1, 101):
     for b in range(101):
         if decode(message, a, b):
             print( decode(message, a, b))
-
-
-
