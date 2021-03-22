@@ -1,13 +1,13 @@
 
-
-def minimum(arr):
-    min_index, min_value = 0, arr[0]
-    for i in range(1, len(arr)):
-        if arr[i] < min_value:
-            min_index, min_value = i, arr[i]
-    return min_value, min_index
-    
 def simple_sort(arr):
+
+    def minimum(arr):
+        min_index, min_value = 0, arr[0]
+        for i in range(1, len(arr)):
+            if arr[i] < min_value:
+                min_index, min_value = i, arr[i]
+        return min_value, min_index
+
     ret_arr, working_arr = [], arr.copy()
     while len(working_arr) > 0:
         min_value, min_index = minimum(working_arr)
