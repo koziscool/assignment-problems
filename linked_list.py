@@ -1,18 +1,19 @@
 
 class Node:
-    def __init__(self, data):
+    def __init__(self, data, index):
         self.data = data
+        self.index = index
         self.next = None
 
 class LinkedList:
     def __init__(self, data):
-        self.head = Node(data)
+        self.head = Node(data, 0)
 
     def print_data(self):
         this = self.head
         while True:
             print(this.data)
-            if not this.next:
+            if this.next  == None:
                 break
             this = this.next
 
@@ -30,23 +31,45 @@ class LinkedList:
             if not this.next:
                 break
             this = this.next
-        new_node = Node(data)
+        new_node = Node(data, this.index + 1)
         this.next = new_node
+
+    def get_node(self, index):
+        this = self.head 
+        while True:
+            if this.index == index:
+                return this
+            if not this.next:
+                break
+            this = this.next
+        return None
+
+    def push(self, new_data):
+        temp = self.head
+        self.head = Node(new_data, 0)
+        self.head.next = temp
+        this = self.head 
+        while True:
+            if not this.next:
+                break
+            this = this.next
+            this.index += 1
         
 
 
-A = Node(4)
-assert(A.data == 4)
-assert(A.next == None)
+linked_list = LinkedList('b')
+linked_list.append('e')
+linked_list.append('f')
+linked_list.push('a')
 
-B = Node(8)
-A.next = B
-assert(A.next.data == 8)
+assert(linked_list.length() == 4)
 
-linked_list = LinkedList(4)
-assert(linked_list.head.data == 4)
-linked_list.append(8)
-assert(linked_list.head.next.data == 8)
-linked_list.append(9)
-# linked_list.print_data()  prints 4, 8, 9 correctly
-assert(linked_list.length() == 3)
+assert(linked_list.head.index==0)
+assert(linked_list.head.next.index==1)
+assert(linked_list.head.next.next.index==2)
+assert(linked_list.head.next.next.next.index==3)
+
+assert(linked_list.get_node(0).data=='a')
+assert(linked_list.get_node(1).data=='b')
+assert(linked_list.get_node(2).data=='e')
+assert( linked_list.get_node(3).data=='f')
