@@ -13,6 +13,7 @@ class Rectangle:
         self.perimeter = 2 * self.base + 2 * self.height
         self.area = self.base * self.height
         self.vertices = [ (0,0), (self.base, 0), (self.base, self.height), (0, self.height) ]
+        self.plot_filename = "rectangle.png"
 
     def describe(self):
         print("Base: ", self.base)
@@ -32,7 +33,7 @@ class Rectangle:
             color=self.color
         )
         plt.gca().set_aspect("equal")
-        plt.savefig('rectangle.png')
+        plt.savefig(self.plot_filename)
         plt.clf()
 
 
@@ -67,6 +68,12 @@ class RightTriangle:
         plt.savefig('triangle.png')
         plt.clf()
 
+class Square(Rectangle):
+    def __init__(self, side, color ):
+        super().__init__(side, side, color)
+        self.plot_filename = "square.png"
+
+
 
 rect = Rectangle(5, 2, "red")
 rect.describe()
@@ -75,3 +82,7 @@ rect.render()
 tri = RightTriangle(5, 2, "blue")
 tri.describe()
 tri.render()
+
+sq = Square( 5, 'green')
+sq.describe()
+sq.render()
