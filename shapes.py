@@ -9,8 +9,6 @@ class Shape:
         self.height = height
         self.color = color
 
-        self.plot_filename = "shape.png"
-
     def describe(self):
         print("Base: ", self.base)
         print("Height: ", self.height)
@@ -56,7 +54,6 @@ class Square(Rectangle):
     def __init__(self, side, color ):
         super().__init__(side, side, color)
         self.plot_filename = "square.png"
-
 
 
 rect = Rectangle(5, 2, "red")
