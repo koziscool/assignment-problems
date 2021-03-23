@@ -13,7 +13,7 @@ class LinkedList:
         this = self.head
         while True:
             print(this.data)
-            if this.next  == None:
+            if not this.next:
                 break
             this = this.next
 
@@ -55,21 +55,70 @@ class LinkedList:
             this = this.next
             this.index += 1
         
+    def delete(self, index):
+        previous, this, decrement_index = None, self.head, False
+        while True:
+            if decrement_index:
+                this.index -= 1
+            if this.index == index:
+                if previous:
+                    previous.next = this.next
+                else:
+                    this.next = self.head
+                decrement_index = True
+            if not this.next:
+                break
+            previous = this
+            this = this.next
+
+    def insert(self, new_data, index):
+        previous, this, increment_index = None, self.head, False
+        while True:
+            if this.index == index:
+                new_node = Node(new_data, index)
+                if previous:
+                    previous.next = new_node 
+                else:
+                    self.head = new_node
+                new_node.next = this
+                increment_index = True
+            if increment_index:
+                this.index += 1
+            if not this.next:
+                break
+            previous = this
+            this = this.next
 
 
-linked_list = LinkedList('b')
+linked_list = LinkedList('a')
+linked_list.append('b')
+linked_list.append('c')
+linked_list.append('d')
 linked_list.append('e')
-linked_list.append('f')
-linked_list.push('a')
+print(linked_list.length())
+print()
 
-assert(linked_list.length() == 4)
+linked_list.print_data()
+print()
 
-assert(linked_list.head.index==0)
-assert(linked_list.head.next.index==1)
-assert(linked_list.head.next.next.index==2)
-assert(linked_list.head.next.next.next.index==3)
+print(linked_list.get_node(2).data)
+print()
 
-assert(linked_list.get_node(0).data=='a')
-assert(linked_list.get_node(1).data=='b')
-assert(linked_list.get_node(2).data=='e')
-assert( linked_list.get_node(3).data=='f')
+linked_list.delete(2)
+print(linked_list.length())
+print()
+
+print(linked_list.get_node(2).data)
+print()
+
+linked_list.print_data()
+print()
+
+linked_list.insert('f', 2)
+print(linked_list.length())
+print()
+
+print(linked_list.get_node(2).data)
+print()
+
+linked_list.print_data()
